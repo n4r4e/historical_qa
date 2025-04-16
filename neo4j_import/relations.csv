@@ -1,0 +1,16 @@
+relation_id,subject_id,predicate,object_id,confidence,context_time_id,context_location_id,sources
+R29ff222a8f5,6b0c12c15f62,caused,08791b89b13b,0.8,4efb44dd8d3c,4f81dbd2f0a0,NZZ_19150405_method2_article_1
+R3d90d3121d0,b4e3a9861fa3,returned from,6b0c12c15f62,0.75,4efb44dd8d3c,4f81dbd2f0a0,NZZ_19150405_method2_article_1
+R2ebc4ce9d8f,98a154b50b62,included favorable terms for,2cd247621842,0.7,4efb44dd8d3c,4f81dbd2f0a0,NZZ_19150405_method2_article_1
+Rea37eef24d3,4f81dbd2f0a0,exhibited,b4a1ede6549c,0.8,4efb44dd8d3c,4f81dbd2f0a0,NZZ_19150405_method2_article_1
+Rfd83c253c63,8b016bc1c68c,engaged in combat with,65150944fb46,0.8,dd530a86431e,4c45c0389e03,NZZ_19150405_method2_article_2
+R5fc4c0c6595,65150944fb46,occupied,4c45c0389e03,0.85,dd530a86431e,4c45c0389e03,NZZ_19150405_method2_article_2
+Rf34ef7ba800,8b016bc1c68c,captured,65150944fb46,0.75,dd530a86431e,1ad2839da037,NZZ_19150405_method2_article_2
+Ra3b2460bbb2,8011e76900d0,denied seeking,8e8e088709cc,0.8,dd530a86431e,,NZZ_19150405_method2_article_2
+R1b9c31f39db,8b016bc1c68c,conducted,718ba107f4e3,0.75,dd530a86431e,1fc9ff7d7fe9,NZZ_19150405_method2_article_2
+R9b3251e4995,65150944fb46,reported pressure on,8011e76900d0,0.7,dd530a86431e,8424465b345d,NZZ_19150405_method2_article_2
+Rc6a5d84e56a,8b016bc1c68c,repelled,65150944fb46,0.75,dd530a86431e,26ccc6790bdd,NZZ_19150405_method2_article_2
+Rc39b83c04fe,c27765c6cbd6,leads,858397b7a277,0.75,4efb44dd8d3c,3df64e558d9e,NZZ_19150405_method2_article_3
+R2b65110fd1e,858397b7a277,founded by,8b5680905228,0.75,4efb44dd8d3c,619387b7ed43,NZZ_19150405_method2_article_3
+R7f3923c2631,41002d5a251d,reports,41002d5a251d,0.75,bc8554f69bdf,41002d5a251d,NZZ_19150405_method2_article_3
+R2a1fb104777,789a6a6a82a2,submits petition to,3df64e558d9e,0.75,4efb44dd8d3c,789a6a6a82a2,NZZ_19150405_method2_article_3

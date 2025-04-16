@@ -1,0 +1,4 @@
+entity_id,precision,type,start_date,end_date,date_reliability
+4efb44dd8d3c,DAY,TIME,1915-04-05,1915-04-05,0.9
+dd530a86431e,DAY,TIME,1915-04-04,1915-04-04,0.9
+bc8554f69bdf,DAY,TIME,1915-04-02,1915-04-02,0.9

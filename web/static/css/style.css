@@ -1,0 +1,113 @@
+/* styles.css */
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+h1 {
+    color: #343a40;
+    font-weight: 600;
+}
+
+.card {
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 500;
+}
+
+#question {
+    resize: vertical;
+}
+
+#answer-text {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #333;
+}
+
+#answer-text p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+#answer-text strong {
+    font-weight: 600;
+    color: #0056b3;  /* Blue color for emphasis */
+}
+
+#answer-text ol, #answer-text ul {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+#answer-text li {
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+#answer-text ol li::marker {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* Card styling */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Make links stand out */
+#answer-text a {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Loading spinner */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Example questions */
+.example-question {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.example-question:hover {
+    background-color: #f0f0f0;
+}
+
+/* media queries for responsiveness */
+@media (max-width: 576px) {
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    .btn {
+        font-size: 0.9rem;
+    }
+}

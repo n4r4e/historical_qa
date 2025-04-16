@@ -1,0 +1,683 @@
+{
+  "entities": [
+    {
+      "id": "b4e3a9861fa3",
+      "type": "PERSON",
+      "text": "soldiers",
+      "confidence": 0.85,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ]
+    },
+    {
+      "id": "2cd247621842",
+      "type": "ORGANIZATION",
+      "text": "military administration",
+      "confidence": 0.8,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ]
+    },
+    {
+      "id": "4f81dbd2f0a0",
+      "type": "LOCATION",
+      "text": "Vienna",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ],
+      "normalized": "Vienna",
+      "latitude": 48.2083537,
+      "longitude": 16.3725042,
+      "display_name": "Wien, Österreich",
+      "location_type": "administrative",
+      "importance": 0.8187832446377734,
+      "osm_id": 109166,
+      "bbox_south": 48.1179069,
+      "bbox_north": 48.3226679,
+      "bbox_west": 16.181831,
+      "bbox_east": 16.5775132
+    },
+    {
+      "id": "9ef8161d4b47",
+      "type": "LOCATION",
+      "text": "Przemysl",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ],
+      "normalized": "Przemysl",
+      "latitude": 49.78355525,
+      "longitude": 22.78851130307014,
+      "display_name": "Przemyśl, województwo podkarpackie, Polska",
+      "location_type": "administrative",
+      "importance": 0.6115848704566573,
+      "osm_id": 3027886,
+      "bbox_south": 49.7464643,
+      "bbox_north": 49.8206437,
+      "bbox_west": 22.7130557,
+      "bbox_east": 22.8554387
+    },
+    {
+      "id": "4efb44dd8d3c",
+      "type": "TIME",
+      "text": "April 5, 1915",
+      "confidence": 0.9,
+      "sources": [
+        "NZZ_19150405_method2_article_1",
+        "NZZ_19150405_method2_article_3"
+      ],
+      "normalized": "1915-04-05",
+      "precision": "DAY",
+      "date_reliability": 0.9,
+      "start_date": "1915-04-05",
+      "end_date": "1915-04-05"
+    },
+    {
+      "id": "6b0c12c15f62",
+      "type": "EVENT",
+      "text": "capitulation of Przemysl",
+      "confidence": 0.9,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ]
+    },
+    {
+      "id": "98a154b50b62",
+      "type": "CONCEPT",
+      "text": "peace proposals from Russia",
+      "confidence": 0.8,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ]
+    },
+    {
+      "id": "08791b89b13b",
+      "type": "SENTIMENT",
+      "text": "public's shock and discontent",
+      "confidence": 0.85,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ]
+    },
+    {
+      "id": "b4a1ede6549c",
+      "type": "SENTIMENT",
+      "text": "underlying anxiety about the war",
+      "confidence": 0.85,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ]
+    },
+    {
+      "id": "8b016bc1c68c",
+      "type": "PERSON",
+      "text": "French troops",
+      "confidence": 0.85,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ]
+    },
+    {
+      "id": "65150944fb46",
+      "type": "PERSON",
+      "text": "German troops",
+      "confidence": 0.85,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ]
+    },
+    {
+      "id": "8011e76900d0",
+      "type": "ORGANIZATION",
+      "text": "Austria-Hungary",
+      "confidence": 0.9,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ]
+    },
+    {
+      "id": "4c45c0389e03",
+      "type": "LOCATION",
+      "text": "Drie-Grachten",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "Drie-Grachten, Belgium",
+      "latitude": 50.956323605512814,
+      "longitude": 2.8186866116006772,
+      "display_name": "Drie Grachten, Noordschote, Lo-Reninge, Diksmuide, West-Vlaanderen, 8647, België / Belgique / Belgien",
+      "location_type": "tertiary",
+      "importance": 0.0533880300602731,
+      "osm_id": 100163149,
+      "bbox_south": 50.9544697,
+      "bbox_north": 50.9586851,
+      "bbox_west": 2.8154787,
+      "bbox_east": 2.8215459
+    },
+    {
+      "id": "7a99e4e43636",
+      "type": "LOCATION",
+      "text": "Dirmuiden",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "Dirmuiden, Belgium"
+    },
+    {
+      "id": "1ad2839da037",
+      "type": "LOCATION",
+      "text": "Somme",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "Somme, France",
+      "latitude": 49.96894815,
+      "longitude": 2.373885538932255,
+      "display_name": "Somme, Hauts-de-France, France métropolitaine, France",
+      "location_type": "administrative",
+      "importance": 0.6728695828072985,
+      "osm_id": 7463,
+      "bbox_south": 49.571783,
+      "bbox_north": 50.3663367,
+      "bbox_west": 1.3798283,
+      "bbox_east": 3.2027711
+    },
+    {
+      "id": "5de25df27a77",
+      "type": "LOCATION",
+      "text": "La Boiselle",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "La Boiselle, France",
+      "latitude": 47.3490422,
+      "longitude": 0.9497192,
+      "display_name": "La Boiselle, Les Devants du Prieuré, Dierre, Loches, Indre-et-Loire, Centre-Val de Loire, France métropolitaine, 37150, France",
+      "location_type": "locality",
+      "importance": 0.06672617456321049,
+      "osm_id": 5312190130,
+      "bbox_south": 47.3390422,
+      "bbox_north": 47.3590422,
+      "bbox_west": 0.9397192,
+      "bbox_east": 0.9597192
+    },
+    {
+      "id": "31ae3179a273",
+      "type": "LOCATION",
+      "text": "Dompierre",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "Dompierre, France",
+      "latitude": 49.5947097,
+      "longitude": 2.535381,
+      "display_name": "Dompierre, Clermont, Oise, Hauts-de-France, France métropolitaine, 60420, France",
+      "location_type": "administrative",
+      "importance": 0.5793276432950987,
+      "osm_id": 531515,
+      "bbox_south": 49.5787325,
+      "bbox_north": 49.6041753,
+      "bbox_west": 2.5211384,
+      "bbox_east": 2.5462986
+    },
+    {
+      "id": "1fc9ff7d7fe9",
+      "type": "LOCATION",
+      "text": "Reims",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "Reims, France",
+      "latitude": 49.2577886,
+      "longitude": 4.031926,
+      "display_name": "Reims, Marne, Grand Est, France métropolitaine, 51100, France",
+      "location_type": "administrative",
+      "importance": 0.6766283567467509,
+      "osm_id": 36458,
+      "bbox_south": 49.2039352,
+      "bbox_north": 49.303187,
+      "bbox_west": 3.9858192,
+      "bbox_east": 4.1296955
+    },
+    {
+      "id": "26ccc6790bdd",
+      "type": "LOCATION",
+      "text": "Augustow",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "Augustow, Poland",
+      "latitude": 53.8449595,
+      "longitude": 23.018354562748584,
+      "display_name": "Augustów, powiat augustowski, województwo podlaskie, Polska",
+      "location_type": "administrative",
+      "importance": 0.5215881163787472,
+      "osm_id": 3086469,
+      "bbox_south": 53.8050992,
+      "bbox_north": 53.8846948,
+      "bbox_west": 22.866589,
+      "bbox_east": 23.1531965
+    },
+    {
+      "id": "ebdf80ea1cd1",
+      "type": "LOCATION",
+      "text": "Carpathians",
+      "confidence": 0.9,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "Carpathian Mountains",
+      "latitude": 46.73361385,
+      "longitude": 24.527358682682937,
+      "display_name": "Karpaten / Karpati / Kárpátok / Karpaty / Munții Carpați / Карпати, România",
+      "location_type": "geomorphological-unit",
+      "importance": 0.6554248602628177,
+      "osm_id": 16391635,
+      "bbox_south": 43.3990629,
+      "bbox_north": 50.0779646,
+      "bbox_west": 16.4327989,
+      "bbox_east": 27.1636908
+    },
+    {
+      "id": "8424465b345d",
+      "type": "LOCATION",
+      "text": "Uzsok Pass",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "Uzsok Pass, Ukraine"
+    },
+    {
+      "id": "b055252886ad",
+      "type": "LOCATION",
+      "text": "Serbia",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "Serbia",
+      "latitude": 44.024322850000004,
+      "longitude": 21.07657433209902,
+      "display_name": "Србија",
+      "location_type": "claimed_administrative",
+      "importance": 0.8352009027776169,
+      "osm_id": 9088937,
+      "bbox_south": 41.8576408,
+      "bbox_north": 46.1902839,
+      "bbox_west": 18.8149945,
+      "bbox_east": 23.006309
+    },
+    {
+      "id": "dd530a86431e",
+      "type": "TIME",
+      "text": "April 4, 1915",
+      "confidence": 0.9,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "normalized": "1915-04-04",
+      "precision": "DAY",
+      "date_reliability": 0.9,
+      "start_date": "1915-04-04",
+      "end_date": "1915-04-04"
+    },
+    {
+      "id": "8e8e088709cc",
+      "type": "EVENT",
+      "text": "World War I",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ]
+    },
+    {
+      "id": "718ba107f4e3",
+      "type": "EVENT",
+      "text": "bombing raids",
+      "confidence": 0.8,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ]
+    },
+    {
+      "id": "30d14d1c254d",
+      "type": "EVENT",
+      "text": "military developments",
+      "confidence": 0.8,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ]
+    },
+    {
+      "id": "c27765c6cbd6",
+      "type": "PERSON",
+      "text": "Baron von Spiegelfeld",
+      "confidence": 0.9,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ]
+    },
+    {
+      "id": "858397b7a277",
+      "type": "PERSON",
+      "text": "Dr. Z. Daranhi",
+      "confidence": 0.9,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ]
+    },
+    {
+      "id": "8b5680905228",
+      "type": "ORGANIZATION",
+      "text": "Hungarian Red Cross",
+      "confidence": 0.85,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ]
+    },
+    {
+      "id": "41002d5a251d",
+      "type": "LOCATION",
+      "text": "Mülhausen i. E.",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ],
+      "normalized": "Mülhausen, Switzerland",
+      "latitude": 47.5581077,
+      "longitude": 7.5878261,
+      "display_name": "Basel, Basel-Stadt, Schweiz/Suisse/Svizzera/Svizra",
+      "location_type": "administrative",
+      "importance": 0.7089166516837468,
+      "osm_id": 1683619,
+      "bbox_south": 47.519294,
+      "bbox_north": 47.5898969,
+      "bbox_west": 7.5546608,
+      "bbox_east": 7.6341406
+    },
+    {
+      "id": "789a6a6a82a2",
+      "type": "LOCATION",
+      "text": "Aargau",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ],
+      "normalized": "Aargau, Switzerland",
+      "latitude": 47.412396,
+      "longitude": 8.1948321,
+      "display_name": "Aargau, Schweiz/Suisse/Svizzera/Svizra",
+      "location_type": "administrative",
+      "importance": 0.6190148866060721,
+      "osm_id": 1686359,
+      "bbox_south": 47.1374801,
+      "bbox_north": 47.6211124,
+      "bbox_west": 7.7134685,
+      "bbox_east": 8.4550999
+    },
+    {
+      "id": "3df64e558d9e",
+      "type": "LOCATION",
+      "text": "Austria",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ],
+      "normalized": "Austria",
+      "latitude": 47.59397,
+      "longitude": 14.12456,
+      "display_name": "Österreich",
+      "location_type": "administrative",
+      "importance": 0.8766461879212911,
+      "osm_id": 16239,
+      "bbox_south": 46.3722987,
+      "bbox_north": 49.0205249,
+      "bbox_west": 9.5307487,
+      "bbox_east": 17.1607728
+    },
+    {
+      "id": "d04d84d97f35",
+      "type": "LOCATION",
+      "text": "Hungary",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ],
+      "normalized": "Hungary",
+      "latitude": 47.1817585,
+      "longitude": 19.5060937,
+      "display_name": "Magyarország",
+      "location_type": "administrative",
+      "importance": 0.8648739840750481,
+      "osm_id": 21335,
+      "bbox_south": 45.737128,
+      "bbox_north": 48.585257,
+      "bbox_west": 16.1138866,
+      "bbox_east": 22.8977094
+    },
+    {
+      "id": "619387b7ed43",
+      "type": "LOCATION",
+      "text": "Budapest",
+      "confidence": 0.95,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ],
+      "normalized": "Budapest, Hungary",
+      "latitude": 47.48138955,
+      "longitude": 19.14609412691246,
+      "display_name": "Budapest, Közép-Magyarország, Magyarország",
+      "location_type": "administrative",
+      "importance": 0.7954227641897471,
+      "osm_id": 37244,
+      "bbox_south": 47.3496899,
+      "bbox_north": 47.6131468,
+      "bbox_west": 18.9251057,
+      "bbox_east": 19.3349258
+    },
+    {
+      "id": "bc8554f69bdf",
+      "type": "TIME",
+      "text": "April 2, 1915",
+      "confidence": 0.9,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ],
+      "normalized": "1915-04-02",
+      "precision": "DAY",
+      "date_reliability": 0.9,
+      "start_date": "1915-04-02",
+      "end_date": "1915-04-02"
+    }
+  ],
+  "relations": [
+    {
+      "id": "R29ff222a8f5",
+      "subject": "6b0c12c15f62",
+      "predicate": "caused",
+      "object": "08791b89b13b",
+      "confidence": 0.8,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ],
+      "context_time": "4efb44dd8d3c",
+      "context_location": "4f81dbd2f0a0"
+    },
+    {
+      "id": "R3d90d3121d0",
+      "subject": "b4e3a9861fa3",
+      "predicate": "returned from",
+      "object": "6b0c12c15f62",
+      "confidence": 0.75,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ],
+      "context_time": "4efb44dd8d3c",
+      "context_location": "4f81dbd2f0a0"
+    },
+    {
+      "id": "R2ebc4ce9d8f",
+      "subject": "98a154b50b62",
+      "predicate": "included favorable terms for",
+      "object": "2cd247621842",
+      "confidence": 0.7,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ],
+      "context_time": "4efb44dd8d3c",
+      "context_location": "4f81dbd2f0a0"
+    },
+    {
+      "id": "Rea37eef24d3",
+      "subject": "4f81dbd2f0a0",
+      "predicate": "exhibited",
+      "object": "b4a1ede6549c",
+      "confidence": 0.8,
+      "sources": [
+        "NZZ_19150405_method2_article_1"
+      ],
+      "context_time": "4efb44dd8d3c",
+      "context_location": "4f81dbd2f0a0"
+    },
+    {
+      "id": "Rfd83c253c63",
+      "subject": "8b016bc1c68c",
+      "predicate": "engaged in combat with",
+      "object": "65150944fb46",
+      "confidence": 0.8,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "context_time": "dd530a86431e",
+      "context_location": "4c45c0389e03"
+    },
+    {
+      "id": "R5fc4c0c6595",
+      "subject": "65150944fb46",
+      "predicate": "occupied",
+      "object": "4c45c0389e03",
+      "confidence": 0.85,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "context_time": "dd530a86431e",
+      "context_location": "4c45c0389e03"
+    },
+    {
+      "id": "Rf34ef7ba800",
+      "subject": "8b016bc1c68c",
+      "predicate": "captured",
+      "object": "65150944fb46",
+      "confidence": 0.75,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "context_time": "dd530a86431e",
+      "context_location": "1ad2839da037"
+    },
+    {
+      "id": "Ra3b2460bbb2",
+      "subject": "8011e76900d0",
+      "predicate": "denied seeking",
+      "object": "8e8e088709cc",
+      "confidence": 0.8,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "context_time": "dd530a86431e"
+    },
+    {
+      "id": "R1b9c31f39db",
+      "subject": "8b016bc1c68c",
+      "predicate": "conducted",
+      "object": "718ba107f4e3",
+      "confidence": 0.75,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "context_time": "dd530a86431e",
+      "context_location": "1fc9ff7d7fe9"
+    },
+    {
+      "id": "R9b3251e4995",
+      "subject": "65150944fb46",
+      "predicate": "reported pressure on",
+      "object": "8011e76900d0",
+      "confidence": 0.7,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "context_time": "dd530a86431e",
+      "context_location": "8424465b345d"
+    },
+    {
+      "id": "Rc6a5d84e56a",
+      "subject": "8b016bc1c68c",
+      "predicate": "repelled",
+      "object": "65150944fb46",
+      "confidence": 0.75,
+      "sources": [
+        "NZZ_19150405_method2_article_2"
+      ],
+      "context_time": "dd530a86431e",
+      "context_location": "26ccc6790bdd"
+    },
+    {
+      "id": "Rc39b83c04fe",
+      "subject": "c27765c6cbd6",
+      "predicate": "leads",
+      "object": "858397b7a277",
+      "confidence": 0.75,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ],
+      "context_time": "4efb44dd8d3c",
+      "context_location": "3df64e558d9e"
+    },
+    {
+      "id": "R2b65110fd1e",
+      "subject": "858397b7a277",
+      "predicate": "founded by",
+      "object": "8b5680905228",
+      "confidence": 0.75,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ],
+      "context_time": "4efb44dd8d3c",
+      "context_location": "619387b7ed43"
+    },
+    {
+      "id": "R7f3923c2631",
+      "subject": "41002d5a251d",
+      "predicate": "reports",
+      "object": "41002d5a251d",
+      "confidence": 0.75,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ],
+      "context_time": "bc8554f69bdf",
+      "context_location": "41002d5a251d"
+    },
+    {
+      "id": "R2a1fb104777",
+      "subject": "789a6a6a82a2",
+      "predicate": "submits petition to",
+      "object": "3df64e558d9e",
+      "confidence": 0.75,
+      "sources": [
+        "NZZ_19150405_method2_article_3"
+      ],
+      "context_time": "4efb44dd8d3c",
+      "context_location": "789a6a6a82a2"
+    }
+  ]
+}

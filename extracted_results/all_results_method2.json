@@ -1,0 +1,384 @@
+{
+  "article_1": {
+    "entities": [
+      {
+        "id": "E1",
+        "type": "PERSON",
+        "text": "soldiers",
+        "confidence": 0.85
+      },
+      {
+        "id": "E2",
+        "type": "ORGANIZATION",
+        "text": "military administration",
+        "confidence": 0.8
+      },
+      {
+        "id": "E3",
+        "type": "LOCATION",
+        "text": "Vienna",
+        "normalized": "Vienna",
+        "confidence": 0.95
+      },
+      {
+        "id": "E4",
+        "type": "LOCATION",
+        "text": "Przemysl",
+        "normalized": "Przemysl",
+        "confidence": 0.95
+      },
+      {
+        "id": "E5",
+        "type": "TIME",
+        "text": "April 5, 1915",
+        "normalized": "1915-04-05",
+        "confidence": 0.9
+      },
+      {
+        "id": "E6",
+        "type": "EVENT",
+        "text": "capitulation of Przemysl",
+        "confidence": 0.9
+      },
+      {
+        "id": "E7",
+        "type": "CONCEPT",
+        "text": "peace proposals from Russia",
+        "confidence": 0.8
+      },
+      {
+        "id": "E8",
+        "type": "SENTIMENT",
+        "text": "public's shock and discontent",
+        "confidence": 0.85
+      },
+      {
+        "id": "E9",
+        "type": "SENTIMENT",
+        "text": "underlying anxiety about the war",
+        "confidence": 0.85
+      }
+    ],
+    "relations": [
+      {
+        "subject": "E6",
+        "predicate": "caused",
+        "object": "E8",
+        "context_time": "E5",
+        "context_location": "E3",
+        "confidence": 0.8
+      },
+      {
+        "subject": "E1",
+        "predicate": "returned from",
+        "object": "E6",
+        "context_time": "E5",
+        "context_location": "E3",
+        "confidence": 0.75
+      },
+      {
+        "subject": "E7",
+        "predicate": "included favorable terms for",
+        "object": "E2",
+        "context_time": "E5",
+        "context_location": "E3",
+        "confidence": 0.7
+      },
+      {
+        "subject": "E3",
+        "predicate": "exhibited",
+        "object": "E9",
+        "context_time": "E5",
+        "context_location": "E3",
+        "confidence": 0.8
+      }
+    ]
+  },
+  "article_2": {
+    "entities": [
+      {
+        "id": "E1",
+        "type": "PERSON",
+        "text": "French troops",
+        "confidence": 0.85
+      },
+      {
+        "id": "E2",
+        "type": "PERSON",
+        "text": "German troops",
+        "confidence": 0.85
+      },
+      {
+        "id": "E3",
+        "type": "ORGANIZATION",
+        "text": "Austria-Hungary",
+        "confidence": 0.9
+      },
+      {
+        "id": "E4",
+        "type": "LOCATION",
+        "text": "Drie-Grachten",
+        "normalized": "Drie-Grachten, Belgium",
+        "confidence": 0.95
+      },
+      {
+        "id": "E5",
+        "type": "LOCATION",
+        "text": "Dirmuiden",
+        "normalized": "Dirmuiden, Belgium",
+        "confidence": 0.95
+      },
+      {
+        "id": "E6",
+        "type": "LOCATION",
+        "text": "Somme",
+        "normalized": "Somme, France",
+        "confidence": 0.95
+      },
+      {
+        "id": "E7",
+        "type": "LOCATION",
+        "text": "La Boiselle",
+        "normalized": "La Boiselle, France",
+        "confidence": 0.95
+      },
+      {
+        "id": "E8",
+        "type": "LOCATION",
+        "text": "Dompierre",
+        "normalized": "Dompierre, France",
+        "confidence": 0.95
+      },
+      {
+        "id": "E9",
+        "type": "LOCATION",
+        "text": "Reims",
+        "normalized": "Reims, France",
+        "confidence": 0.95
+      },
+      {
+        "id": "E10",
+        "type": "LOCATION",
+        "text": "Augustow",
+        "normalized": "Augustow, Poland",
+        "confidence": 0.95
+      },
+      {
+        "id": "E11",
+        "type": "LOCATION",
+        "text": "Carpathians",
+        "normalized": "Carpathian Mountains",
+        "confidence": 0.9
+      },
+      {
+        "id": "E12",
+        "type": "LOCATION",
+        "text": "Uzsok Pass",
+        "normalized": "Uzsok Pass, Ukraine",
+        "confidence": 0.95
+      },
+      {
+        "id": "E13",
+        "type": "LOCATION",
+        "text": "Serbia",
+        "normalized": "Serbia",
+        "confidence": 0.95
+      },
+      {
+        "id": "E14",
+        "type": "TIME",
+        "text": "April 4, 1915",
+        "normalized": "1915-04-04",
+        "confidence": 0.9
+      },
+      {
+        "id": "E15",
+        "type": "EVENT",
+        "text": "World War I",
+        "confidence": 0.95
+      },
+      {
+        "id": "E16",
+        "type": "EVENT",
+        "text": "bombing raids",
+        "confidence": 0.8
+      },
+      {
+        "id": "E17",
+        "type": "EVENT",
+        "text": "military developments",
+        "confidence": 0.8
+      }
+    ],
+    "relations": [
+      {
+        "subject": "E1",
+        "predicate": "engaged in combat with",
+        "object": "E2",
+        "context_time": "E14",
+        "context_location": "E4",
+        "confidence": 0.8
+      },
+      {
+        "subject": "E2",
+        "predicate": "occupied",
+        "object": "E4",
+        "context_time": "E14",
+        "context_location": "E4",
+        "confidence": 0.85
+      },
+      {
+        "subject": "E1",
+        "predicate": "captured",
+        "object": "E2",
+        "context_time": "E14",
+        "context_location": "E6",
+        "confidence": 0.75
+      },
+      {
+        "subject": "E3",
+        "predicate": "denied seeking",
+        "object": "E15",
+        "context_time": "E14",
+        "context_location": "Vienna",
+        "confidence": 0.8
+      },
+      {
+        "subject": "E1",
+        "predicate": "conducted",
+        "object": "E16",
+        "context_time": "E14",
+        "context_location": "E9",
+        "confidence": 0.75
+      },
+      {
+        "subject": "E2",
+        "predicate": "reported pressure on",
+        "object": "E3",
+        "context_time": "E14",
+        "context_location": "E12",
+        "confidence": 0.7
+      },
+      {
+        "subject": "E1",
+        "predicate": "repelled",
+        "object": "E2",
+        "context_time": "E14",
+        "context_location": "E10",
+        "confidence": 0.75
+      }
+    ]
+  },
+  "article_3": {
+    "entities": [
+      {
+        "id": "E1",
+        "type": "PERSON",
+        "text": "Baron von Spiegelfeld",
+        "confidence": 0.9
+      },
+      {
+        "id": "E2",
+        "type": "PERSON",
+        "text": "Dr. Z. Daranhi",
+        "confidence": 0.9
+      },
+      {
+        "id": "E3",
+        "type": "ORGANIZATION",
+        "text": "Hungarian Red Cross",
+        "confidence": 0.85
+      },
+      {
+        "id": "E4",
+        "type": "LOCATION",
+        "text": "Mülhausen i. E.",
+        "normalized": "Mülhausen, Switzerland",
+        "confidence": 0.95
+      },
+      {
+        "id": "E5",
+        "type": "LOCATION",
+        "text": "Basel",
+        "normalized": "Basel, Switzerland",
+        "confidence": 0.95
+      },
+      {
+        "id": "E6",
+        "type": "LOCATION",
+        "text": "Aargau",
+        "normalized": "Aargau, Switzerland",
+        "confidence": 0.95
+      },
+      {
+        "id": "E7",
+        "type": "LOCATION",
+        "text": "Austria",
+        "normalized": "Austria",
+        "confidence": 0.95
+      },
+      {
+        "id": "E8",
+        "type": "LOCATION",
+        "text": "Hungary",
+        "normalized": "Hungary",
+        "confidence": 0.95
+      },
+      {
+        "id": "E9",
+        "type": "LOCATION",
+        "text": "Budapest",
+        "normalized": "Budapest, Hungary",
+        "confidence": 0.95
+      },
+      {
+        "id": "E10",
+        "type": "TIME",
+        "text": "April 2, 1915",
+        "normalized": "1915-04-02",
+        "confidence": 0.9
+      },
+      {
+        "id": "E11",
+        "type": "TIME",
+        "text": "April 5, 1915",
+        "normalized": "1915-04-05",
+        "confidence": 0.9
+      }
+    ],
+    "relations": [
+      {
+        "subject": "E1",
+        "predicate": "leads",
+        "object": "E2",
+        "context_time": "E11",
+        "context_location": "E7",
+        "confidence": 0.75
+      },
+      {
+        "subject": "E2",
+        "predicate": "founded by",
+        "object": "E3",
+        "context_time": "E11",
+        "context_location": "E9",
+        "confidence": 0.75
+      },
+      {
+        "subject": "E4",
+        "predicate": "reports",
+        "object": "E5",
+        "context_time": "E10",
+        "context_location": "E4",
+        "confidence": 0.75
+      },
+      {
+        "subject": "E6",
+        "predicate": "submits petition to",
+        "object": "E7",
+        "context_time": "E11",
+        "context_location": "E6",
+        "confidence": 0.75
+      }
+    ]
+  }
+}

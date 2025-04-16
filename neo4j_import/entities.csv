@@ -1,0 +1,36 @@
+entity_id,type,text,normalized,confidence,sources
+b4e3a9861fa3,PERSON,soldiers,,0.85,NZZ_19150405_method2_article_1
+2cd247621842,ORGANIZATION,military administration,,0.8,NZZ_19150405_method2_article_1
+4f81dbd2f0a0,LOCATION,Vienna,Vienna,0.95,NZZ_19150405_method2_article_1
+9ef8161d4b47,LOCATION,Przemysl,Przemysl,0.95,NZZ_19150405_method2_article_1
+4efb44dd8d3c,TIME,"April 5, 1915",1915-04-05,0.9,NZZ_19150405_method2_article_1|NZZ_19150405_method2_article_3
+6b0c12c15f62,EVENT,capitulation of Przemysl,,0.9,NZZ_19150405_method2_article_1
+98a154b50b62,CONCEPT,peace proposals from Russia,,0.8,NZZ_19150405_method2_article_1
+08791b89b13b,SENTIMENT,public's shock and discontent,,0.85,NZZ_19150405_method2_article_1
+b4a1ede6549c,SENTIMENT,underlying anxiety about the war,,0.85,NZZ_19150405_method2_article_1
+8b016bc1c68c,PERSON,French troops,,0.85,NZZ_19150405_method2_article_2
+65150944fb46,PERSON,German troops,,0.85,NZZ_19150405_method2_article_2
+8011e76900d0,ORGANIZATION,Austria-Hungary,,0.9,NZZ_19150405_method2_article_2
+4c45c0389e03,LOCATION,Drie-Grachten,"Drie-Grachten, Belgium",0.95,NZZ_19150405_method2_article_2
+7a99e4e43636,LOCATION,Dirmuiden,"Dirmuiden, Belgium",0.95,NZZ_19150405_method2_article_2
+1ad2839da037,LOCATION,Somme,"Somme, France",0.95,NZZ_19150405_method2_article_2
+5de25df27a77,LOCATION,La Boiselle,"La Boiselle, France",0.95,NZZ_19150405_method2_article_2
+31ae3179a273,LOCATION,Dompierre,"Dompierre, France",0.95,NZZ_19150405_method2_article_2
+1fc9ff7d7fe9,LOCATION,Reims,"Reims, France",0.95,NZZ_19150405_method2_article_2
+26ccc6790bdd,LOCATION,Augustow,"Augustow, Poland",0.95,NZZ_19150405_method2_article_2
+ebdf80ea1cd1,LOCATION,Carpathians,Carpathian Mountains,0.9,NZZ_19150405_method2_article_2
+8424465b345d,LOCATION,Uzsok Pass,"Uzsok Pass, Ukraine",0.95,NZZ_19150405_method2_article_2
+b055252886ad,LOCATION,Serbia,Serbia,0.95,NZZ_19150405_method2_article_2
+dd530a86431e,TIME,"April 4, 1915",1915-04-04,0.9,NZZ_19150405_method2_article_2
+8e8e088709cc,EVENT,World War I,,0.95,NZZ_19150405_method2_article_2
+718ba107f4e3,EVENT,bombing raids,,0.8,NZZ_19150405_method2_article_2
+30d14d1c254d,EVENT,military developments,,0.8,NZZ_19150405_method2_article_2
+c27765c6cbd6,PERSON,Baron von Spiegelfeld,,0.9,NZZ_19150405_method2_article_3
+858397b7a277,PERSON,Dr. Z. Daranhi,,0.9,NZZ_19150405_method2_article_3
+8b5680905228,ORGANIZATION,Hungarian Red Cross,,0.85,NZZ_19150405_method2_article_3
+41002d5a251d,LOCATION,Mülhausen i. E.,"Mülhausen, Switzerland",0.95,NZZ_19150405_method2_article_3
+789a6a6a82a2,LOCATION,Aargau,"Aargau, Switzerland",0.95,NZZ_19150405_method2_article_3
+3df64e558d9e,LOCATION,Austria,Austria,0.95,NZZ_19150405_method2_article_3
+d04d84d97f35,LOCATION,Hungary,Hungary,0.95,NZZ_19150405_method2_article_3
+619387b7ed43,LOCATION,Budapest,"Budapest, Hungary",0.95,NZZ_19150405_method2_article_3
+bc8554f69bdf,TIME,"April 2, 1915",1915-04-02,0.9,NZZ_19150405_method2_article_3
