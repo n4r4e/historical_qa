@@ -59,13 +59,13 @@ def split_into_chunks(text: str, max_words: int = 500) -> List[str]:
     return chunks
 
 # Article summarization function
-def summarize_article(article_text: str, article_title: str, article_date: str, model: str = "gpt-4o-mini") -> str:
+def summarize_article(article_text: str, article_title: str, article_date: str, model: str = "gpt-4.1-nano") -> str:
     """
     Use LLM to summarize an article.
     """    
     prompt = f"""    
     You are an expert in summarizing historical documents.
-    The following is a newspaper article published on {article_date}. Please summarize this article concisely while preserving important entities such as people, places, time and events mentioned in the article, as well as their relationships.
+    The following is a newspaper article published on {article_date}. Please summarize this article concisely in English while preserving important entities such as people, places, time and events mentioned in the article, as well as their relationships.
     Maintain temporal and spatial information as much as possible.
 
     Title: {article_title}
@@ -88,7 +88,7 @@ def summarize_article(article_text: str, article_title: str, article_date: str, 
         return ""
 
 # Entity and relation extraction function (chunk-based)
-def extract_entities_relations_from_chunk(chunk: str, article_title: str, article_date: str, model: str = "gpt-4o-mini") -> Dict:
+def extract_entities_relations_from_chunk(chunk: str, article_title: str, article_date: str, model: str = "gpt-4.1-nano") -> Dict:
     """
     Use LLM to extract entities and relations from a text chunk.
     """
@@ -119,7 +119,7 @@ def extract_entities_relations_from_chunk(chunk: str, article_title: str, articl
     {{
       "entities": [
         {{"id": "E1", "type": "PERSON", "text": "person name", "confidence": 0.9}},
-        {{"id": "E2", "type": "ORGANIZATION", "text": "organization name", "confidence": 0.85}},
+        {{"id": "E2", "type": "EVENT", "text": "event name", "confidence": 0.85}},
         {{"id": "E3", "type": "LOCATION", "text": "place name", "normalized": "standardized place name", "confidence": 0.95}},
         {{"id": "E4", "type": "TIME", "text": "date or time expression", "normalized": "YYYY-MM-DD or period", "confidence": 0.8}}
       ],
@@ -144,7 +144,7 @@ def extract_entities_relations_from_chunk(chunk: str, article_title: str, articl
             model=model,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.2,
-            max_tokens=1500
+            max_tokens=2000
         )
         result_text = response.choices[0].message.content
         
@@ -173,7 +173,7 @@ def extract_entities_relations_from_chunk(chunk: str, article_title: str, articl
         return {"error": str(e)}
 
 # Entity and relation extraction function from summary
-def extract_entities_relations_from_summary(summary: str, article_title: str, article_date: str, model: str = "gpt-4o-mini") -> Dict:
+def extract_entities_relations_from_summary(summary: str, article_title: str, article_date: str, model: str = "gpt-4.1-nano") -> Dict:
     """
     Use LLM to extract entities and relations from a summarized text.
     """
@@ -204,7 +204,7 @@ def extract_entities_relations_from_summary(summary: str, article_title: str, ar
     {{
       "entities": [
         {{"id": "E1", "type": "PERSON", "text": "person name", "confidence": 0.9}},
-        {{"id": "E2", "type": "ORGANIZATION", "text": "organization name", "confidence": 0.85}},
+        {{"id": "E2", "type": "EVENT", "text": "event name", "confidence": 0.85}},
         {{"id": "E3", "type": "LOCATION", "text": "place name", "normalized": "standardized place name", "confidence": 0.95}},
         {{"id": "E4", "type": "TIME", "text": "date or time expression", "normalized": "YYYY-MM-DD or period", "confidence": 0.8}}
       ],
@@ -229,7 +229,7 @@ def extract_entities_relations_from_summary(summary: str, article_title: str, ar
             model=model,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.2,
-            max_tokens=1500
+            max_tokens=3000
         )
         result_text = response.choices[0].message.content
 
@@ -402,58 +402,76 @@ def process_summary_based(article_data: Dict, article_date: str) -> Dict:
 
 # Main execution code
 def main():
-    # JSON file path
-    input_file = os.path.join(ROOT_DIR, "newspapers", "NZZ_19150405.json")
+    # Newspapers directory
+    newspapers_dir = os.path.join(ROOT_DIR, "newspapers")
 
     # Output directory
     output_dir = os.path.join(ROOT_DIR, "extracted_results")
     os.makedirs(output_dir, exist_ok=True)
     
-    # Load data
-    with open(input_file, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    
-    # Extract metadata
-    publication_date = data.get("date")
-
     # Select method to process (1, 2)
-    methods = [1, 2]  # Change this to select the method
+    methods = [2]  # Change this to select the method
     
-    for method in methods:
-        print(f"\n=== Processing with Method {method} ===")
-
-        # Process articles
-        all_results = {}
-        all_summaries = {}
+    # Get all JSON files in the newspapers directory
+    json_files = [f for f in os.listdir(newspapers_dir) if f.endswith('.json')]
+    
+    if not json_files:
+        print(f"No JSON files found in {newspapers_dir}")
+        return
+    
+    print(f"Found {len(json_files)} JSON files to process")
+    
+    # Process each JSON file
+    for json_file in json_files:
+        input_file_path = os.path.join(newspapers_dir, json_file)
+        base_filename = os.path.splitext(json_file)[0]  # Get filename without extension
         
-        for i, article in enumerate(data.get("articles", [])):
-            article_id = f"article_{i+1}"
-            
-            # Process with the selected method
-            if method == 1:
-                result = process_chunk_based(article, publication_date)
-            elif method == 2:
-                result, summary = process_summary_based(article, publication_date)
-            else:
-                raise ValueError(f"Invalid method selection: {method}")
-            
-            all_results[article_id] = result
-            all_summaries[article_id] = summary if method != 1 else None
-            
-            # Save individual article results
-            with open(f"{output_dir}/{article_id}_method{method}.json", 'w', encoding='utf-8') as f:
-                json.dump(result, f, ensure_ascii=False, indent=2)
+        print(f"\n=== Processing file: {json_file} ===")
         
-        # Save all results
-        with open(f"{output_dir}/all_results_method{method}.json", 'w', encoding='utf-8') as f:
-            json.dump(all_results, f, ensure_ascii=False, indent=2)
-
-        with open(f"{output_dir}/all_summaries_method{method}.json", 'w', encoding='utf-8') as f:
-            json.dump(all_summaries, f, ensure_ascii=False, indent=2)
+        # Load data
+        with open(input_file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
         
-        print(f"Processing complete! Results saved to the {output_dir} directory.")
+        # Extract metadata
+        publication_date = data.get("date")
+        
+        for method in methods:
+            print(f"\n=== Processing with Method {method} ===")
 
-    print(f"\nAll methods processed! Results saved in: {output_dir}")
+            # Process articles
+            all_results = {}
+            all_summaries = {}
+            
+            for i, article in enumerate(data.get("articles", [])):
+                article_id = f"article_{i+1}"
+                
+                # Process with the selected method
+                if method == 1:
+                    result = process_chunk_based(article, publication_date)
+                    all_results[article_id] = result
+                elif method == 2:
+                    result, summary = process_summary_based(article, publication_date)
+                    all_results[article_id] = result
+                    all_summaries[article_id] = summary
+                else:
+                    raise ValueError(f"Invalid method selection: {method}")
+            
+            # Save combined results with filename based on input file
+            results_filename = f"{base_filename}_results_method{method}.json"
+            with open(os.path.join(output_dir, results_filename), 'w', encoding='utf-8') as f:
+                json.dump(all_results, f, ensure_ascii=False, indent=2)
+            
+            # Save summaries only for method 2
+            if method == 2 and all_summaries:
+                summaries_filename = f"{base_filename}_summaries_method{method}.json"
+                with open(os.path.join(output_dir, summaries_filename), 'w', encoding='utf-8') as f:
+                    json.dump(all_summaries, f, ensure_ascii=False, indent=2)
+            
+            print(f"Results saved as {results_filename}")
+            if method == 2:
+                print(f"Summaries saved as {summaries_filename}")
+    
+    print(f"\nAll files processed! Results saved in: {output_dir}")
 
 if __name__ == "__main__":
     main()
