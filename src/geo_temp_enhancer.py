@@ -1,4 +1,4 @@
-# geo_temp_enhancer.property
+# geo_temp_enhancer.py
 import json
 import os
 import time
@@ -187,6 +187,7 @@ class GeoTemporalEnhancer:
     def parse_temporal_info(self, text: str, normalized: str) -> Dict[str, Any]:
         """
         Parse temporal information to extract standardized dates and metadata.
+        Handles various formats including date ranges, ISO timestamps, and invalid dates.
         
         Args:
             text: The original temporal text
@@ -195,111 +196,277 @@ class GeoTemporalEnhancer:
         Returns:
             Enhanced temporal information
         """
-        # Current implementation remains the same as before
         result = {
             "precision": "UNKNOWN",
             "type": "UNKNOWN",
             "date_reliability": 0.7
         }
         
-        # First, try to use the normalized value if it exists
-        if normalized:
-            # Handle ISO-formatted dates (YYYY-MM-DD)
-            if len(normalized) >= 10 and normalized[4] == '-' and normalized[7] == '-':
-                result["start_date"] = normalized
-                result["end_date"] = normalized
-                result["precision"] = "DAY"
-                result["type"] = "POINT"
-                result["date_reliability"] = 0.9
-                
-            # Handle year-month format (YYYY-MM)
-            elif len(normalized) >= 7 and normalized[4] == '-':
-                year, month = normalized.split('-')
-                result["start_date"] = f"{normalized}-01"
-                
-                # Calculate the last day of the month
-                if month == '02':
-                    # Simple leap year check
-                    if int(year) % 4 == 0 and (int(year) % 100 != 0 or int(year) % 400 == 0):
-                        result["end_date"] = f"{normalized}-29"
-                    else:
-                        result["end_date"] = f"{normalized}-28"
-                elif month in ['04', '06', '09', '11']:
-                    result["end_date"] = f"{normalized}-30"
+        def get_last_day_of_month(year, month):
+            """Helper function to get the last day of a month"""
+            if month == 2:
+                if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):
+                    return 29
                 else:
-                    result["end_date"] = f"{normalized}-31"
-                
-                result["precision"] = "MONTH"
-                result["type"] = "PERIOD"
-                result["date_reliability"] = 0.85
-                
-            # Handle year-only format (YYYY)
-            elif len(normalized) == 4 and normalized.isdigit():
-                result["start_date"] = f"{normalized}-01-01"
-                result["end_date"] = f"{normalized}-12-31"
-                result["precision"] = "YEAR"
-                result["type"] = "PERIOD"
-                result["date_reliability"] = 0.8
+                    return 28
+            elif month in [4, 6, 9, 11]:
+                return 30
+            else:
+                return 31
         
-        # If normalized format wasn't recognized, try to parse the original text
-        if result["precision"] == "UNKNOWN":
+        def fix_invalid_date(year, month, day):
+            """Fix invalid dates by adjusting to valid values"""
+            # Ensure month is valid
+            month = max(1, min(12, month))
+            
+            # Ensure day is valid for the given month
+            max_day = get_last_day_of_month(year, month)
+
+            # Adjust day if it exceeds the maximum for the month
+            if day > max_day:
+                day = max_day 
+            
+            return year, month, day
+        
+        def extract_standard_date(date_str):
+            """Extract a standard ISO date (YYYY-MM-DD)"""
             try:
-                # Use dateparser to handle natural language dates
-                parsed_date = dateparser.parse(text)
-                if parsed_date:
-                    # Format as ISO
-                    iso_date = parsed_date.strftime("%Y-%m-%d")
-                    result["start_date"] = iso_date
-                    result["end_date"] = iso_date
+                parts = date_str.split('-')
+                year = int(parts[0])
+                month = 1
+                day = 1
+                
+                if len(parts) > 1 and parts[1].isdigit():
+                    month = int(parts[1])
+                
+                if len(parts) > 2:
+                    # Handle special T format for time (e.g., 05T13:00)
+                    day_part = parts[2].split('T')[0]
+                    if day_part.isdigit():
+                        day = int(day_part)
+                
+                # Validate and fix date components
+                year, month, day = fix_invalid_date(year, month, day)
+                
+                return {
+                    "date": f"{year:04d}-{month:02d}-{day:02d}",
+                    "year": year,
+                    "month": month,
+                    "day": day
+                }
+            except Exception as e:
+                # print(f"Error extracting standard date from '{date_str}': {e}")
+                return None
+        
+        # Main processing starts here
+        if normalized:
+            # Remove any leading text before actual dates
+            if "approximately " in normalized:
+                normalized = normalized.replace("approximately ", "")
+            
+            # Case 1: Handle date ranges with "to" or "and"
+            for separator in [" to ", " and "]:
+                if separator in normalized:
+                    try:
+                        start_part, end_part = normalized.split(separator)
+                        
+                        # Extract start date
+                        start_date = extract_standard_date(start_part.strip())
+                        if not start_date:
+                            continue
+                        
+                        # Extract end date
+                        end_date = extract_standard_date(end_part.strip())
+                        if not end_date:
+                            continue
+                        
+                        # Set date range
+                        result["start_date"] = start_date["date"]
+                        result["end_date"] = end_date["date"]
+                        
+                        # Determine precision
+                        if len(start_part.split('-')) > 2 and len(end_part.split('-')) > 2:
+                            result["precision"] = "DAY"
+                        elif len(start_part.split('-')) > 1 and len(end_part.split('-')) > 1:
+                            result["precision"] = "MONTH"
+                        else:
+                            result["precision"] = "YEAR"
+                        
+                        result["type"] = "PERIOD"
+                        result["date_reliability"] = 0.85
+                        return result
+                    except Exception as e:
+                        # This separator didn't work, try the next one
+                        continue
+            
+            # Case 2: Handle ISO timestamps with T
+            if 'T' in normalized:
+                try:
+                    date_part = normalized.split('T')[0]
+                    time_part = normalized.split('T')[1]
+                    
+                    date_info = extract_standard_date(date_part)
+                    if date_info:
+                        result["start_date"] = date_info["date"]
+                        result["end_date"] = date_info["date"]
+                        result["precision"] = "DAY"
+                        result["type"] = "POINT"
+                        result["date_reliability"] = 0.9
+                        return result
+                except Exception as e:
+                    # Continue to next case
+                    pass
+            
+            # Case 3: Simple year range (YYYY-YYYY)
+            if len(normalized) == 9 and normalized[4] == '-' and normalized[:4].isdigit() and normalized[5:].isdigit():
+                try:
+                    start_year = int(normalized[:4])
+                    end_year = int(normalized[5:])
+                    
+                    result["start_date"] = f"{start_year:04d}-01-01"
+                    result["end_date"] = f"{end_year:04d}-12-31"
+                    result["precision"] = "YEAR"
+                    result["type"] = "PERIOD"
+                    result["date_reliability"] = 0.85
+                    return result
+                except Exception as e:
+                    # Continue to next case
+                    pass
+            
+            # Case 4: Standard ISO date (YYYY-MM-DD)
+            if len(normalized) >= 10 and normalized[4] == '-' and normalized[7] == '-':
+                date_info = extract_standard_date(normalized)
+                if date_info:
+                    result["start_date"] = date_info["date"]
+                    result["end_date"] = date_info["date"]
                     result["precision"] = "DAY"
                     result["type"] = "POINT"
-                    result["date_reliability"] = 0.7
-            except Exception as e:
-                print(f"Error parsing date '{text}': {e}")
+                    result["date_reliability"] = 0.9
+                    return result
+            
+            # Case 5: Year-month (YYYY-MM)
+            if len(normalized) == 7 and normalized[4] == '-' and normalized[:4].isdigit() and normalized[5:].isdigit():
+                try:
+                    year = int(normalized[:4])
+                    month = int(normalized[5:])
+                    
+                    # Validate month
+                    month = max(1, min(12, month))
+                    
+                    # Calculate last day of month
+                    last_day = get_last_day_of_month(year, month)
+                    
+                    result["start_date"] = f"{year:04d}-{month:02d}-01"
+                    result["end_date"] = f"{year:04d}-{month:02d}-{last_day:02d}"
+                    result["precision"] = "MONTH"
+                    result["type"] = "PERIOD"
+                    result["date_reliability"] = 0.85
+                    return result
+                except Exception as e:
+                    # Continue to next case
+                    pass
+            
+            # Case 6: Year only (YYYY)
+            if len(normalized) == 4 and normalized.isdigit():
+                try:
+                    year = int(normalized)
+                    result["start_date"] = f"{year:04d}-01-01"
+                    result["end_date"] = f"{year:04d}-12-31"
+                    result["precision"] = "YEAR"
+                    result["type"] = "PERIOD"
+                    result["date_reliability"] = 0.8
+                    return result
+                except Exception as e:
+                    # Continue to next case
+                    pass
         
-        # Look for specific temporal patterns in the text
-        if "month" in text.lower():
-            result["precision"] = "MONTH"
-            result["type"] = "PERIOD"
+        # If none of the patterns matched, try dateparser on the original text
+        try:
+            parsed_date = dateparser.parse(text)
+            if parsed_date:
+                iso_date = parsed_date.strftime("%Y-%m-%d")
+                result["start_date"] = iso_date
+                result["end_date"] = iso_date
+                result["precision"] = "DAY"
+                result["type"] = "POINT"
+                result["date_reliability"] = 0.7
+        except Exception as e:
+            # Fallback to text analysis
+            pass
         
-        if "year" in text.lower():
-            result["precision"] = "YEAR"
-            result["type"] = "PERIOD"
+        # Analyze text content for additional clues
+        if text:
+            if "month" in text.lower() or "monthly" in text.lower():
+                if "precision" not in result or result["precision"] == "UNKNOWN":
+                    result["precision"] = "MONTH"
+                    result["type"] = "PERIOD"
+            
+            if "year" in text.lower() or "annual" in text.lower() or "wartime" in text.lower():
+                if "precision" not in result or result["precision"] == "UNKNOWN":
+                    result["precision"] = "YEAR"
+                    result["type"] = "PERIOD"
         
         return result
 
 def enhance_extraction_results():
     """
-    Enhance extraction results with geospatial and temporal information.
+    Enhance extraction results with geospatial and temporal information
+    for all files in the extracted_results folder.
     """
     # Create enhancer
     enhancer = GeoTemporalEnhancer()
     
-    # Define input and output file paths
-    input_file = os.path.join(ROOT_DIR, "extracted_results", "all_results_method2.json")
+    # Define input and output directories
+    input_dir = os.path.join(ROOT_DIR, "extracted_results")
     output_dir = os.path.join(ROOT_DIR, "enhanced_results")
-    os.makedirs(output_dir, exist_ok=True) 
-    output_file = os.path.join(output_dir, "NZZ_19150405_method2.json")
-
-    # Load input data
-    with open(input_file, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+    os.makedirs(output_dir, exist_ok=True)
     
-    # Check if the structure is a dictionary of articles
-    if isinstance(data, dict) and all(isinstance(value, dict) for value in data.values()):
-        # Process each article
-        enhanced_data = {}
-        for article_id, article_data in data.items():
-            enhanced_data[article_id] = enhancer.enhance_results(article_data)
-    else:
-        # Single article or different structure
-        enhanced_data = enhancer.enhance_results(data)
+    # Get all result files in the input directory that match the pattern "*_results_method*.json"
+    result_files = [f for f in os.listdir(input_dir) if f.endswith('.json') and '_results_method' in f]
     
-    # Save enhanced data
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(enhanced_data, f, ensure_ascii=False, indent=2)
+    if not result_files:
+        print(f"No result files found in {input_dir}")
+        return
     
-    print(f"Enhanced data saved to {output_file}")
+    print(f"Found {len(result_files)} result files to process")
+    
+    # Process each result file
+    for result_file in result_files:
+        input_file_path = os.path.join(input_dir, result_file)
+        
+        # Extract base filename and method number
+        # Example: "NZZ_19150405_results_method2.json" -> "NZZ_19150405" and "2"
+        filename_parts = result_file.split('_results_method')
+        base_filename = filename_parts[0]
+        method_num = filename_parts[1].split('.')[0]
+        
+        # Create output filename
+        output_filename = f"{base_filename}_method{method_num}.json"
+        output_file_path = os.path.join(output_dir, output_filename)
+        
+        print(f"\n=== Processing file: {result_file} ===")
+        
+        # Load input data
+        with open(input_file_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        # Check if the structure is a dictionary of articles
+        if isinstance(data, dict) and all(isinstance(value, dict) for value in data.values()):
+            # Process each article
+            enhanced_data = {}
+            for article_id, article_data in data.items():
+                enhanced_data[article_id] = enhancer.enhance_results(article_data)
+        else:
+            # Single article or different structure
+            enhanced_data = enhancer.enhance_results(data)
+        
+        # Save enhanced data
+        with open(output_file_path, 'w', encoding='utf-8') as f:
+            json.dump(enhanced_data, f, ensure_ascii=False, indent=2)
+        
+        print(f"Enhanced data saved to {output_filename}")
+    
+    print(f"\nAll files processed! Enhanced results saved in: {output_dir}")
 
 if __name__ == "__main__":
     enhance_extraction_results()
